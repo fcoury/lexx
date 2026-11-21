@@ -1,14 +1,35 @@
 [
   {
-    "path": "print/left/fixed_shell.stl",
-    "sha256": "cb52a06c25821c19ca445f1e9fcdb99e98c7c542ee399911a47b1fe4986efe2a",
-    "triangles": 5830,
+    "path": "print/left/fixed_plate.stl",
+    "sha256": "cd52d920827d5e95dba0f3886a36ba9b6e48ed3d69713fa378c961a74b073927",
+    "triangles": 3172,
     "connected_components": 1,
     "bad_edges": 0,
     "zero_area_triangles": 0,
     "self_intersections": 0,
-    "signed_volume_mm3": 42191.49,
-    "flex_open_to_rim_width_mm": 8.0
+    "signed_volume_mm3": 10004.63
+  },
+  {
+    "path": "print/left/fixed_shell.stl",
+    "sha256": "3c1c7c38c56c0ef109e53e84b947df19e2d8788a87da2d58ae7c289966356a5d",
+    "triangles": 7138,
+    "connected_components": 1,
+    "bad_edges": 0,
+    "zero_area_triangles": 0,
+    "self_intersections": 0,
+    "signed_volume_mm3": 41714.86,
+    "flex_open_to_rim_width_mm": 8.0,
+    "five_matching_screw_seats_and_plate_pilots": true
+  },
+  {
+    "path": "print/left/thumb_plate.stl",
+    "sha256": "71e23671c3367d0fc1fe37599ac60814786f8f5d2a09ba30ab7a7e469557e438",
+    "triangles": 2242,
+    "connected_components": 1,
+    "bad_edges": 0,
+    "zero_area_triangles": 0,
+    "self_intersections": 0,
+    "signed_volume_mm3": 6571.29
   },
   {
     "path": "print/left/thumb_shell.stl",
@@ -89,15 +110,36 @@
     ]
   },
   {
-    "path": "print/right/fixed_shell.stl",
-    "sha256": "7010c65f535fb4d2b261d8c0fe102df994673042d045a492a67f2c3181281194",
-    "triangles": 5830,
+    "path": "print/right/fixed_plate.stl",
+    "sha256": "c51fefc0246dd2d5ca25f5c0ba8441255f5aee02825c5be27dfb76d67edf0178",
+    "triangles": 3172,
     "connected_components": 1,
     "bad_edges": 0,
     "zero_area_triangles": 0,
     "self_intersections": 0,
-    "signed_volume_mm3": 42191.49,
-    "flex_open_to_rim_width_mm": 8.0
+    "signed_volume_mm3": 10004.63
+  },
+  {
+    "path": "print/right/fixed_shell.stl",
+    "sha256": "da77f5da43e24224ef1ffbcf130cb3ed5655616b5f53e043ba4bf7296d870bf8",
+    "triangles": 7138,
+    "connected_components": 1,
+    "bad_edges": 0,
+    "zero_area_triangles": 0,
+    "self_intersections": 0,
+    "signed_volume_mm3": 41714.86,
+    "flex_open_to_rim_width_mm": 8.0,
+    "five_matching_screw_seats_and_plate_pilots": true
+  },
+  {
+    "path": "print/right/thumb_plate.stl",
+    "sha256": "2f155b7a361d636095a247e9ee4fd0a7075965884bc9d84ba1fc2d0de633336a",
+    "triangles": 2242,
+    "connected_components": 1,
+    "bad_edges": 0,
+    "zero_area_triangles": 0,
+    "self_intersections": 0,
+    "signed_volume_mm3": 6571.29
   },
   {
     "path": "print/right/thumb_shell.stl",

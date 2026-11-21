@@ -260,7 +260,7 @@ class Drawing:
         path = directory / (self.board + ".kicad_sch")
         path.write_text(f'''(kicad_sch (version 20250114) (generator eeschema)
  (uuid "{self.sheet_id}") (paper "A3")
- (title_block (title "Lexx expanded MX — {heading}") (rev "A") (company "Lexx")
+ (title_block (title "Lexx expanded MX — {heading}") (rev "B") (company "Lexx")
   (comment 1 "58-key wireless split keyboard • 29 keys per hand"))
  (lib_symbols {lib})
  {body}

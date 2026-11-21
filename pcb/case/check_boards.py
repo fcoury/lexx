@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
-from shapely.geometry import LineString, MultiPoint, Point, box
+from shapely.geometry import LineString, MultiPoint, Point, Polygon, box
 from shapely.ops import polygonize, unary_union
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -61,6 +61,56 @@ def projected_surface(tris, z_min, z_max):
     return unary_union(shapes)
 
 
+def switch_clearances(hand, deck, parts, board, shell, plate):
+    """Project the mounted STEP silhouettes, actual pads and MX fitting holes."""
+    profiles = json.loads((HERE/"component-profiles.json").read_text())
+    socket = Polygon(profiles["MX"]["xy"])
+    ffc = Polygon(profiles["FFC12"]["xy"])
+    pads = unary_union([box(x-1.275,y-1.25,x+1.275,y+1.25)
+                        for x,y in ((7.085,-2.54),(-5.842,-5.08))])
+    pegs = unary_union([Point(x,0).buffer(r,quad_segs=64) for x,r in
+                        ((-5.08,.95),(0,2.05),(5.08,.95))])
+    # A locating pin that projects beneath the PCB is represented for the
+    # entire socket depth. The SMT pads include their full rectangular corners.
+    key = "fixed" if deck == "finger" else "thumb"
+    design = json.loads((ROOT/"validation"/"design.json").read_text())["Expanded"]
+    yaws = [p[2] for p in design[key]["keys"]]
+    shell_band = projected_surface(shell, 9.70, 11.41)
+    plate_band = projected_surface(plate, 9.70, 11.41)
+    copper_band = projected_surface(plate, 11.37, 11.42)
+    shell_copper = projected_surface(shell, 11.37, 11.42)
+    other = {p["ref"]:pose(ffc if p["ref"]=="J1" else PROFILE[p["footprint"].split(":")[1]],
+                          *p["xy"],p["angle"]) for p in parts if not p["ref"].startswith("SW")}
+    results = {}
+    def keep(key, dist, ref):
+        if key not in results or dist < results[key][0]:
+            results[key] = [float(dist), ref]
+    switches = [p for p in parts if p["ref"].startswith("SW")]
+    assert len(switches)==len(yaws)
+    for part,yaw in zip(switches,yaws):
+        ref = part["ref"]
+        param = (*part["xy"],part["angle"])
+        target = (180 + yaw*(1 if hand=="left" else -1)) % 360
+        assert abs((part["angle"]-target+180)%360-180)<.0001, ref
+        body = pose(socket,*param)
+        copper = pose(pads,*param)
+        stem = pose(pegs,*param)
+        assert board.covers(copper), f"{hand}-{deck}/{ref} pad outside board"
+        envelope = body.union(stem).union(copper)
+        keep("socket_body_to_shell",body.distance(shell_band),ref)
+        keep("socket_body_to_plate_posts",body.distance(plate_band),ref)
+        keep("locating_pins_to_shell_or_plate",min(stem.distance(shell_band),stem.distance(plate_band)),ref)
+        keep("solder_pads_to_plate_posts",copper.distance(copper_band),ref)
+        keep("solder_pads_to_shell",copper.distance(shell_copper),ref)
+        keep("solder_pads_to_edge_cuts",copper.distance(board.boundary),ref)
+        for which, footprint in other.items():
+            keep("socket_pads_pins_to_adjacent_component",envelope.distance(footprint),f"{ref}/{which}")
+    for key,(dist,ref) in results.items():
+        assert dist>.03,(hand,deck,key,dist,ref)
+    return {key:{"gap_mm":round(dist,3),"at":ref} for key,(dist,ref) in results.items()}
+
+
+
 def verify(hand, deck):
     name = hand+"-"+deck
     folder = ROOT/"pcb"/name
@@ -71,7 +121,7 @@ def verify(hand, deck):
     parts_area = unary_union([pose(PROFILE[p["footprint"].split(":")[-1]],*p["xy"],p["angle"]) for p in parts])
     kind = "fixed" if deck=="finger" else "thumb"
     shell = stl_mesh(HERE/"print"/hand/(kind+"_shell.stl"))
-    plate = stl_mesh(ROOT/"print"/"expanded"/hand/(kind+"_plate.stl"))*[1,-1,-1]+[0,0,18]
+    plate = stl_mesh(HERE/"print"/hand/(kind+"_plate.stl"))*[1,-1,-1]+[0,0,18]
     case_gap = board.distance(projected_surface(shell,11.4,13.0))
     post_gap = board.distance(projected_surface(plate,11.4,13.0))
     assert min(case_gap,post_gap)>0, (name,case_gap,post_gap)
@@ -86,7 +136,8 @@ def verify(hand, deck):
         highest = trace(shell,[x,y,14],[0,0,-1])[0]
         assert abs(14-highest-11.2)<.002, (name,x,y,highest)
         gaps.append(round(gap,3))
-    return {"board":name, "edge_cuts_area_mm2":round(board.area,3),
+    measured = switch_clearances(hand, deck, parts, board, shell, plate)
+    return {"board":name, "mounted_mx_minima":measured, "edge_cuts_area_mm2":round(board.area,3),
             "shell_gap_mm":round(case_gap,3), "plate_post_gap_mm":round(post_gap,3),
             "support_z_gap_mm":.20, "support_to_component_xy_gaps_mm":gaps}
 

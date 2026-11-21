@@ -1,0 +1,218 @@
+[
+  {
+    "board": "left-finger",
+    "switch_centers_probed": 26,
+    "mounts_probed": 5,
+    "verified_aperture_mm": 14.1,
+    "plate_thickness_mm": 1.2,
+    "plate_top_mm": 15.2,
+    "measured_minima": {
+      "PCB_to_shell": {
+        "mm": 0.386,
+        "at": "left-finger"
+      },
+      "PCB_to_posts": {
+        "mm": 0.369,
+        "at": "left-finger"
+      },
+      "socket_to_shell": {
+        "mm": 0.72,
+        "at": "SW1"
+      },
+      "socket_to_posts": {
+        "mm": 1.488,
+        "at": "SW7"
+      },
+      "pads_to_shell": {
+        "mm": 1.096,
+        "at": "SW4"
+      },
+      "pads_to_posts": {
+        "mm": 2.025,
+        "at": "SW25"
+      },
+      "pegs_to_shell": {
+        "mm": 0.982,
+        "at": "SW14"
+      },
+      "pegs_to_posts": {
+        "mm": 1.46,
+        "at": "SW2"
+      },
+      "pads_to_milled_edge": {
+        "mm": 0.637,
+        "at": "SW13"
+      },
+      "switch_to_neighbor": {
+        "mm": 1.12,
+        "at": "SW9/D9"
+      },
+      "lands_to_components_XY": {
+        "mm": 0.855,
+        "at": "2"
+      }
+    }
+  },
+  {
+    "board": "left-thumb",
+    "switch_centers_probed": 3,
+    "mounts_probed": 4,
+    "verified_aperture_mm": 14.1,
+    "plate_thickness_mm": 1.2,
+    "plate_top_mm": 15.2,
+    "measured_minima": {
+      "PCB_to_shell": {
+        "mm": 0.407,
+        "at": "left-thumb"
+      },
+      "PCB_to_posts": {
+        "mm": 0.394,
+        "at": "left-thumb"
+      },
+      "socket_to_shell": {
+        "mm": 2.464,
+        "at": "SW29"
+      },
+      "socket_to_posts": {
+        "mm": 6.174,
+        "at": "SW27"
+      },
+      "pads_to_shell": {
+        "mm": 4.778,
+        "at": "SW29"
+      },
+      "pads_to_posts": {
+        "mm": 5.609,
+        "at": "SW27"
+      },
+      "pegs_to_shell": {
+        "mm": 0.909,
+        "at": "SW27"
+      },
+      "pegs_to_posts": {
+        "mm": 3.161,
+        "at": "SW29"
+      },
+      "pads_to_milled_edge": {
+        "mm": 1.908,
+        "at": "SW29"
+      },
+      "switch_to_neighbor": {
+        "mm": 1.12,
+        "at": "SW27/D27"
+      },
+      "lands_to_components_XY": {
+        "mm": 0.906,
+        "at": "1"
+      }
+    }
+  },
+  {
+    "board": "right-finger",
+    "switch_centers_probed": 26,
+    "mounts_probed": 5,
+    "verified_aperture_mm": 14.1,
+    "plate_thickness_mm": 1.2,
+    "plate_top_mm": 15.2,
+    "measured_minima": {
+      "PCB_to_shell": {
+        "mm": 0.383,
+        "at": "right-finger"
+      },
+      "PCB_to_posts": {
+        "mm": 0.369,
+        "at": "right-finger"
+      },
+      "socket_to_shell": {
+        "mm": 1.013,
+        "at": "SW13"
+      },
+      "socket_to_posts": {
+        "mm": 1.456,
+        "at": "SW9"
+      },
+      "pads_to_shell": {
+        "mm": 1.101,
+        "at": "SW18"
+      },
+      "pads_to_posts": {
+        "mm": 1.988,
+        "at": "SW9"
+      },
+      "pegs_to_shell": {
+        "mm": 0.356,
+        "at": "SW6"
+      },
+      "pegs_to_posts": {
+        "mm": 1.325,
+        "at": "SW15"
+      },
+      "pads_to_milled_edge": {
+        "mm": 0.637,
+        "at": "SW18"
+      },
+      "switch_to_neighbor": {
+        "mm": 1.12,
+        "at": "SW9/D9"
+      },
+      "lands_to_components_XY": {
+        "mm": 0.353,
+        "at": "3"
+      }
+    }
+  },
+  {
+    "board": "right-thumb",
+    "switch_centers_probed": 3,
+    "mounts_probed": 4,
+    "verified_aperture_mm": 14.1,
+    "plate_thickness_mm": 1.2,
+    "plate_top_mm": 15.2,
+    "measured_minima": {
+      "PCB_to_shell": {
+        "mm": 0.407,
+        "at": "right-thumb"
+      },
+      "PCB_to_posts": {
+        "mm": 0.394,
+        "at": "right-thumb"
+      },
+      "socket_to_shell": {
+        "mm": 1.402,
+        "at": "SW27"
+      },
+      "socket_to_posts": {
+        "mm": 4.181,
+        "at": "SW27"
+      },
+      "pads_to_shell": {
+        "mm": 2.236,
+        "at": "SW27"
+      },
+      "pads_to_posts": {
+        "mm": 4.309,
+        "at": "SW27"
+      },
+      "pegs_to_shell": {
+        "mm": 3.277,
+        "at": "SW27"
+      },
+      "pegs_to_posts": {
+        "mm": 2.825,
+        "at": "SW28"
+      },
+      "pads_to_milled_edge": {
+        "mm": 1.765,
+        "at": "SW27"
+      },
+      "switch_to_neighbor": {
+        "mm": 1.12,
+        "at": "SW27/D27"
+      },
+      "lands_to_components_XY": {
+        "mm": 1.399,
+        "at": "1"
+      }
+    }
+  }
+]

@@ -6,7 +6,7 @@ import sys
 
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
-from shapely.geometry import LineString, box
+from shapely.geometry import LineString, Polygon, box
 from shapely.ops import polygonize
 
 sys.path.insert(0,str(Path(__file__).resolve().parent))
@@ -64,11 +64,13 @@ def main():
         parts[deck]=json.loads((folder/"circuit.json").read_text())
         draw_poly(section(shell_mesh[deck],2,1.5),plan,shell,ink,bg)
         draw_poly(boards[deck],plan,pcb,muted,shell)
+    profiles = json.loads((HERE/"component-profiles.json").read_text())
     def draw_parts(deck,transform):
         for part in parts[deck]:
             key=part["footprint"].split(":")[-1]
             if key=="SOD123":continue
-            shape=pose(PROFILE[key],*part["xy"],part["angle"])
+            local = Polygon(profiles[key]["xy"]) if key in profiles else PROFILE[key]
+            shape=pose(local,*part["xy"],part["angle"])
             draw_poly(shape,transform, socket if key=="MX" else cable if key=="FFC12" else module,
                       muted,pcb)
     def draw_supports(kind,transform):

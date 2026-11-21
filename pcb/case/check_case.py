@@ -77,10 +77,10 @@ def verify_interfaces(hand, name, tris):
     # Return both the shell and the unchanged, bed-oriented switch plate to left assembly space.
     sign = 1 if hand == "left" else -1
     tris = tris * [sign,1,1]
-    plate = stl_mesh(ROOT/"print"/"expanded"/hand/(name+"_plate.stl")) * [sign,-1,-1] + [0,0,18]
+    plate = stl_mesh(HERE/"print"/hand/(name+"_plate.stl")) * [sign,-1,-1] + [0,0,18]
     geometry = np.concatenate([tris,plate])
-    cx = -27 if name == "fixed" else 22.35
-    cy = DESIGN[name]["loop_port"][1]
+    cx, cy = (json.loads((HERE/"finger-profiles.json").read_text())["connector_xy_mm"]
+              if name == "fixed" else (22.35, DESIGN[name]["loop_port"][1]))
     info = {}
 
     def first(origin, direction):
@@ -95,6 +95,13 @@ def verify_interfaces(hand, name, tris):
         for z in (4.20,8.2,11.9,16.4):
             assert first((cx+dx,cy+7,z),(0,-1,0)) > 12.0, "Obstructed cable slot"
     info["flex_open_to_rim_width_mm"] = 8.0
+    if name == "fixed":
+        posts = json.loads((HERE/"finger-posts.json").read_text())
+        for x,y in posts:
+            close(first((x,y,1.5),(1,0,0)),1.45,"bottom screw clearance hole")
+            close(trace(plate,(x,y,10),(1,0,0))[0],1.05,"plate pilot")
+            close(trace(plate,(x+3,y,10),(-1,0,0))[0],.55,"plate post radius")
+        info["five_matching_screw_seats_and_plate_pilots"] = True
     if name == "thumb":
         for y, width, z0, z1 in ((.5,12,5,11.8),(-14,9,8,11.8)):
             z = (z0+z1)/2
@@ -135,10 +142,12 @@ def main():
         name = path.stem.split("_")[0]
         tris = stl_mesh(path)
         result = dict(path=str(path.relative_to(HERE)), sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
-                      **topology(tris), **verify_interfaces(hand,name,tris))
+                      **topology(tris))
+        if path.stem.endswith("_shell"):
+            result.update(verify_interfaces(hand,name,tris))
         records.append(result)
         print(path.relative_to(HERE), result["triangles"], "triangles; passed", flush=True)
-    assert len(records) == 4
+    assert len(records) == 8
     (HERE/"shell-checks.json").write_text(json.dumps(records,indent=2)+"\n")
 
 

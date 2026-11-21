@@ -1,6 +1,7 @@
 """Trace the manufactured keyboard's logical wiring through the firmware and four schematics."""
 
 import os
+import json
 from pathlib import Path
 import re
 import subprocess
@@ -49,7 +50,9 @@ def main():
     transform = [
         tuple(map(int, pair)) for pair in re.findall(r"RC\((\d+),\s*(\d+)\)", overlay)
     ]
+    layout = json.loads((ROOT.parent / "validation/design.json").read_text())["Expanded"]
     scanned = set()
+    physical = []
     with tempfile.TemporaryDirectory() as tmp:
         for hand in ("left", "right"):
             thumb = schematic_pins(hand + "-thumb", Path(tmp))
@@ -88,9 +91,19 @@ def main():
                     f"{hand} {sw} duplicate position {matrix_key}",
                 )
                 scanned.add(matrix_key)
+                key = (layout["fixed"]["keys"][num-1] if num <= 26
+                       else layout["thumb"]["keys"][num-27])
+                x = key[0] if hand == "left" else -key[0]
+                # The keymap reads each row from the far-left finger to the far-right
+                # finger. The last row includes the two forward finger positions.
+                physical.append((-matrix_key[0], hand, x, matrix_key))
     require(
         len(transform) == 58 and set(transform) == scanned,
         "Key transform differs from populated matrix",
+    )
+    require(
+        transform == [key for _, _, _, key in sorted(physical)],
+        "Firmware transform order differs from the mounted keys in the two halves",
     )
     layers = re.findall(
         r"bindings\s*=\s*<([^>]+)>", (FIRMWARE / "lexx.keymap").read_text()

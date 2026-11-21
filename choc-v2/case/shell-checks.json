@@ -1,0 +1,92 @@
+[
+  {
+    "part": "print/left/fixed_plate.stl",
+    "sha256": "a17f9a77f8317e1196e11f46121db0d80d78200c4bb6450b99af7ae144cfd12d",
+    "triangles": 3446,
+    "connected_components": 1,
+    "bad_edges": 0,
+    "zero_area_triangles": 0,
+    "self_intersections": 0,
+    "signed_volume_mm3": 7735.84
+  },
+  {
+    "part": "print/left/fixed_shell.stl",
+    "sha256": "5e6c7087a584ea1020eb01c4596d34ee6fc32eb8fe9e4cba23b885535a0c1702",
+    "triangles": 7894,
+    "connected_components": 1,
+    "bad_edges": 0,
+    "zero_area_triangles": 0,
+    "self_intersections": 0,
+    "signed_volume_mm3": 39420.81
+  },
+  {
+    "part": "print/left/thumb_plate.stl",
+    "sha256": "e4afed8bb599ee85aef5da71d13ce7a4bd2f3036a6ddda371139761cd497437b",
+    "triangles": 2236,
+    "connected_components": 1,
+    "bad_edges": 0,
+    "zero_area_triangles": 0,
+    "self_intersections": 0,
+    "signed_volume_mm3": 5183.85
+  },
+  {
+    "part": "print/left/thumb_shell.stl",
+    "sha256": "fd6f90618c7130d73623707f99a58812d73a2801649eda37e74adbed97298d98",
+    "triangles": 6062,
+    "connected_components": 1,
+    "bad_edges": 0,
+    "zero_area_triangles": 0,
+    "self_intersections": 0,
+    "signed_volume_mm3": 21336.55
+  },
+  {
+    "part": "print/right/fixed_plate.stl",
+    "sha256": "a6d64019d9f0cd054648dcae953c33605b12d8228617fcbb614ba18351395b7b",
+    "triangles": 3446,
+    "connected_components": 1,
+    "bad_edges": 0,
+    "zero_area_triangles": 0,
+    "self_intersections": 0,
+    "signed_volume_mm3": 7735.84
+  },
+  {
+    "part": "print/right/fixed_shell.stl",
+    "sha256": "a30742b356ffda7b49d092de7698a8c9584c77c606879635b3505f947c677ccc",
+    "triangles": 7894,
+    "connected_components": 1,
+    "bad_edges": 0,
+    "zero_area_triangles": 0,
+    "self_intersections": 0,
+    "signed_volume_mm3": 39420.81
+  },
+  {
+    "part": "print/right/thumb_plate.stl",
+    "sha256": "a087cfe0b9cdd22bd3c65301e603cb08c7e8b8b8ed5965a503961139484a3586",
+    "triangles": 2236,
+    "connected_components": 1,
+    "bad_edges": 0,
+    "zero_area_triangles": 0,
+    "self_intersections": 0,
+    "signed_volume_mm3": 5183.85
+  },
+  {
+    "part": "print/right/thumb_shell.stl",
+    "sha256": "dd02b45ef233b43bd86137402202d92e4acdf9b1125d89ae741bd0bbb8791f8f",
+    "triangles": 6062,
+    "connected_components": 1,
+    "bad_edges": 0,
+    "zero_area_triangles": 0,
+    "self_intersections": 0,
+    "signed_volume_mm3": 21336.55
+  },
+  {
+    "part": "choc-fit-coupon.stl",
+    "sha256": "9a74c3914e033818f839d653c0177bd075741fe83cace3c7851b32001ea6def8",
+    "triangles": 32,
+    "connected_components": 1,
+    "bad_edges": 0,
+    "zero_area_triangles": 0,
+    "self_intersections": 0,
+    "signed_volume_mm3": 342.23
+  }
+]

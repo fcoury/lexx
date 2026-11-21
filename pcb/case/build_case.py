@@ -12,7 +12,8 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(HERE))
-from build import boolean, box, circle, export, mesh, rings
+from build import boolean, box, circle, cylinder, export, mesh, ringbox, rings
+from hinge import _add_knuckle
 import electronics
 
 
@@ -47,7 +48,7 @@ def flex_slot(shell, center_x, front_y):
         hit, outer, _, _ = shell.ray_cast((x, front_y+8, 13), (0, -1, 0))
         assert hit
         hit, inner, _, _ = shell.ray_cast((x, outer.y-.01, 13), (0, -1, 0))
-        assert hit and 2 < outer.y-inner.y < 7
+        assert hit and 1.1 < outer.y-inner.y < 8
         yz = [(inner.y-2, sill-radius)]
         for cy, first, last in [(inner.y+radius, 180, 90), (outer.y-radius, 90, 0)]:
             for i in range(6):
@@ -65,6 +66,42 @@ def flex_slot(shell, center_x, front_y):
     return mesh("Cable slot tool", vertices, faces)
 
 
+
+def load_fixed_case(scene, design):
+    """Use the same stepped case and original indexed joint on both hands."""
+    profiles = json.loads((HERE/"finger-profiles.json").read_text())
+    posts = json.loads((HERE/"finger-posts.json").read_text())
+    shell = rings("Revised finger housing", [(profiles["floor_bevel"], 0),
+                  (profiles["outer"], .45), (profiles["outer"], 16.5)])
+    void = rings("Board cavity", [(profiles["inner"], 2.4), (profiles["inner"], 17)])
+    boolean(shell, [void], "DIFFERENCE")
+    plate = rings("Revised finger plate", [(profiles["plate"], 16.5),
+                  (profiles["plate"], 17.68), (profiles["plate_bevel"], 18)])
+    boolean(plate, [ringbox(x,y,yaw,7,16,19) for x,y,yaw in design["keys"]], "DIFFERENCE")
+    boolean(plate, [box(-1.5,14.8,2.25,3.5,16.3,17.2)], "DIFFERENCE")
+    boolean(plate, [cylinder(x,y,2.45,2.45,16.75) for x,y in posts], "UNION")
+    boolean(plate, [cylinder(x,y,1.05,1,16.3) for x,y in posts], "DIFFERENCE")
+    seats = [rings("Screw seat", [(circle(x,y,r),z) for z,r in
+                                  ((-.2,2.75),(0,2.55),(1.1,1.45),(3.1,1.45))])
+             for x,y in posts]
+    boolean(shell, seats, "DIFFERENCE")
+    _add_knuckle(shell, -1, -22.0, -12.0)
+    _add_knuckle(shell, -1, 17.8, 23.0, (-3.5, 3.5))
+    # Trim the upper inside tip of the web below the innermost socket. The
+    # lower web, axle and indexing ears retain the original joint geometry.
+    seat = box(-9.95,-12.9,1.0,2.7,9.15,11.18)
+    boolean(shell, [seat], "DIFFERENCE")
+    # Keep the original object IDs, collections, materials and linked right hand.
+    for name, updated in (("fixed_shell",shell),("fixed_plate",plate)):
+        target = scene.objects[name]
+        material = target.data.materials[0]
+        target.data = updated.data
+        target.data.materials.append(material)
+        bpy.data.objects.remove(updated, do_unlink=True)
+    return profiles["connector_xy_mm"]
+
+
+
 def main():
     bpy.ops.wm.open_mainfile(filepath=str(ROOT/"models"/"Expanded.blend"))
     scene = bpy.context.scene
@@ -73,10 +110,11 @@ def main():
     controls.update_tag()
     bpy.context.view_layer.update()
     original = json.loads((ROOT/"validation"/"design.json").read_text())["Expanded"]
+    connector = load_fixed_case(scene, original["fixed"])
     for name in ("fixed", "thumb"):
         shell = scene.objects[name+"_shell"]
-        center_x = -27 if name == "fixed" else 22.35
-        cutters = [flex_slot(shell, center_x, original[name]["loop_port"][1])]
+        center_x, rear_y = connector if name == "fixed" else (22.35,original[name]["loop_port"][1])
+        cutters = [flex_slot(shell, center_x, rear_y)]
         if name == "thumb":
             # The module PCB shoulders reach x=32.05 on both sides of its USB socket.
             # Recess the interior wall while retaining 1.20 mm of exterior skin.
@@ -104,6 +142,8 @@ def main():
             output = HERE/"print"/hand
             output.mkdir(parents=True, exist_ok=True)
             export(shell, output/(shell.name+".stl"), hand == "right")
+            plate = scene.objects[name+"_plate"]
+            export(plate, output/(plate.name+".stl"), hand == "right")
     electronics.add()
     bpy.ops.object.select_all(action='DESELECT')
     controls.select_set(True)

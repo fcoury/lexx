@@ -11,6 +11,7 @@ PCB = Path(__file__).resolve().parents[1]
 
 def get_geometry():
     import pcbnew as k
+    from verify_switches import mx_drills
 
     def xy(v):
         return [k.ToMM(v.x), k.ToMM(v.y)]
@@ -49,10 +50,8 @@ def get_geometry():
             for fp in board.GetFootprints():
                 ref = fp.GetReference()
                 if ref.startswith("SW"):
-                    holes = [(xy(p.GetPosition()), k.ToMM(p.GetDrillSizeX())/2) for p in fp.Pads()
-                             if p.GetAttribute() == k.PAD_ATTRIB_NPTH]
-                    assert len(holes) == 5
-                    switches.append([ref, xy(fp.GetPosition()), holes])
+                    stem, holes, window = mx_drills(fp)
+                    switches.append([ref, stem, holes, window])
                 elif ref in ("J1","J2","U1","S1"):
                     body = [shape(g) for g in fp.GraphicalItems() if isinstance(g,k.PCB_SHAPE)
                             and g.GetLayer()==k.B_Fab
@@ -76,7 +75,10 @@ def draw_file(data):
     c.setTitle("Lexx expanded MX | Full-scale PCB fit sheets")
     c.setAuthor("Lexx")
     ink, grey, connector, post = "#183036", "#62757A", "#9B4A26", "#126678"
-    full = json.loads((PCB.parent/"validation/design.json").read_text())["Expanded"]
+    window_color = "#653974"
+    case = json.loads((PCB.parent/"validation/design.json").read_text())["Expanded"]
+    screws = {"fixed": json.loads((PCB/"case/finger-posts.json").read_text()),
+              "thumb": case["thumb"]["screws"]}
     supports = json.loads((PCB/"case/supports.json").read_text())
 
     def pen(color=ink, width=.25, dash=()):
@@ -125,13 +127,21 @@ def draw_file(data):
             pen(ink,.32)
             for edge in deck["edges"]:
                 geom(edge)
-            for ref,pt,holes in deck["switches"]:
+            for ref,pt,holes,window in deck["switches"]:
                 x,y=pos(pt)
                 pen(grey,.13)
                 for p,r in holes:
                     c.circle(*pos(p),r,stroke=1,fill=0)
                 pen(ink,.19)
                 plus(x,y,1.25)
+                # A chevron on the LED side follows the actual five-hole pattern.
+                # PDF Y is up, while KiCad Y increases toward the typist.
+                vx,vy = window[0],-window[1]
+                tip = (x+5.4*vx,y+5.4*vy)
+                tx,ty = (x+4.2*vx,y+4.2*vy)
+                pen(window_color,.34)
+                c.line(tx-vy,ty+vx,*tip)
+                c.line(*tip,tx+vy,ty-vx)
                 txt(x,y-7.9,ref,1.8,color=grey,align="center")
             for ref, pad1, body in deck["connectors"]:
                 pen(connector,.22)
@@ -148,7 +158,7 @@ def draw_file(data):
                 txt(x,y-.65,ref,1.8,True,connector,align="center")
         sign=1 if hand=="left" else -1
         for zone in ("fixed","thumb"):
-            for x,y in full[zone]["screws"]:
+            for x,y in screws[zone]:
                 x,y=pos((150+sign*x,100-y))
                 pen(post,.2)
                 plus(x,y,1.35)
@@ -165,9 +175,11 @@ def draw_file(data):
         txt(54,54,"MX stem, locating pegs and socket holes. The cross marks each switch center.",3)
         txt(15,48,"Teal marks",3,True,post)
         txt(54,48,"Crosses mark screw-post centers. Dashed circles show the tips of PCB supports.",3)
-        txt(15,42,"Copper-colored outlines",3,True,connector)
-        txt(54,42,"Underside parts. Dots identify pin 1 on J1 (ribbon) and J2 (battery).",3)
-        txt(54,36,"U1 is the XIAO with USB-C. S1 is the power switch.",3)
+        txt(15,42,"Purple chevrons",3,True,window_color)
+        txt(54,42,"Point to the LED-window side of each switch, toward the typist.",3)
+        txt(15,36,"Copper-colored outlines",3,True,connector)
+        txt(54,36,"Underside parts. Dots identify pin 1 on J1 (ribbon) and J2 (battery).",3)
+        txt(54,30,"U1 is the XIAO with USB-C. S1 is the power switch.",3)
         pen(ink,.28)
         c.line(15,17,65,17)
         for x in (15,65):

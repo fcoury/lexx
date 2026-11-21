@@ -10,7 +10,7 @@ import bpy
 from mathutils import Matrix, Vector
 from mathutils.geometry import delaunay_2d_cdt
 
-from build import material, mesh
+from build import material, mesh, rings
 
 PCB = Path(__file__).resolve().parents[1]
 NUMBER = r"[-+.\d]+"
@@ -103,6 +103,16 @@ def bounding_box(label, low, high):
     return mesh(label,xyz,faces)
 
 
+def component_meshes(part, profiles):
+    kind = part["footprint"].split(":")[-1]
+    if kind in profiles:
+        profile = profiles[kind]
+        outline = profile["xy"]
+        return [(kind, rings(kind, [(outline, 11.4+profile["lowest_from_board_underside_mm"]),
+                                    (outline, 11.4)]))]
+    return [(label, bounding_box(label,low,high)) for label,low,high in part_boxes(part)]
+
+
 def part_boxes(part):
     """Conservative component bodies, based on the footprints and assembled Z stack."""
     key = part["footprint"].split(":")[-1]
@@ -113,15 +123,14 @@ def part_boxes(part):
         return [("switch",(-3.35,-1.0,9.9),(3.35,1.6,11.4)),
                 ("slider travel",(-1.4,1.6,9.9),(1.4,3.15,11.2))]
     bounds = {
-        "MX": ((-7.34,-6.45,9.45),(8.55,-1.22,11.4)),
         "SOD123": ((-2.5,-1.18,9.95),(2.5,1.18,11.4)),
-        "FFC12": ((-5.8,-2.65,9.4),(5.8,4.5,11.4)),
         "Battery": ((-4.0,-4.5,7.65),(4.0,4.5,11.4)),
     }
     return [(key,*bounds[key])]
 
 
 def add():
+    profiles = json.loads((Path(__file__).parent/"component-profiles.json").read_text())
     scene = bpy.context.scene
     pair = bpy.data.scenes["Split keyboard"]
     pivot = scene.objects["ThumbPivot"]
@@ -171,8 +180,8 @@ def add():
                 return obj
             register(laminate(folder/(board+".kicad_pcb")), "PCB", "PCB")
             for part in json.loads((folder/"circuit.json").read_text()):
-                for label,low,high in part_boxes(part):
-                    obj = register(bounding_box(label,low,high),part["ref"]+" "+label,label)
+                for label,mesh_object in component_meshes(part, profiles):
+                    obj = register(mesh_object,part["ref"]+" "+label,label)
                     obj.location.x,obj.location.y = part["xy"]
                     obj.rotation_euler.z = math.radians(part["angle"])
                     obj["component"] = part["value"]

@@ -17,6 +17,10 @@ def make(name):
     folder = PCB / name
     parts = json.loads((folder / "circuit.json").read_text())
     board = k.BOARD()
+    title = k.TITLE_BLOCK()
+    title.SetTitle(f"Lexx Expanded MX — {name}")
+    title.SetRevision("B")
+    board.SetTitleBlock(title)
     board.SetCopperLayerCount(2)
     board.GetDesignSettings().SetBoardThickness(k.FromMM(1.6))
     nets = {}
@@ -88,7 +92,7 @@ def make(name):
     hand, deck = name.split("-")
     x, y = (-49, 37) if deck == "finger" else (21, -24)
     label = k.PCB_TEXT(board)
-    label.SetText(f"LX-{hand[0].upper()}{deck[0].upper()}-A")
+    label.SetText(f"LX-{hand[0].upper()}{deck[0].upper()}-B")
     label.SetPosition(position(x if hand == "left" else -x, y))
     label.SetTextSize(k.VECTOR2I(k.FromMM(1.02), k.FromMM(1.02)))
     label.SetTextThickness(k.FromMM(0.16))

@@ -1,6 +1,6 @@
 (kicad_sch (version 20250114) (generator eeschema)
  (uuid "50fae80a-a20f-5d27-aa3a-a4d9ce36fd2f") (paper "A3")
- (title_block (title "Lexx expanded MX — Right Thumb") (rev "A") (company "Lexx")
+ (title_block (title "Lexx expanded MX — Right Thumb") (rev "B") (company "Lexx")
   (comment 1 "58-key wireless split keyboard • 29 keys per hand"))
  (lib_symbols (symbol "Lexx:Battery"
 (pin_names (offset 0.762))

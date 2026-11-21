@@ -3,10 +3,10 @@
 import json
 import math
 import uuid
-from shapely.affinity import rotate, translate
+from shapely.affinity import rotate, scale, translate
 from shapely.geometry import Point, box
 from shapely.ops import unary_union
-from outline import ROOT, board, cavity
+from outline import ROOT, board
 
 PCB = ROOT / "pcb"
 LAYOUT = json.loads((ROOT / "validation/design.json").read_text())["Expanded"]
@@ -25,6 +25,13 @@ SOCKET = unary_union(
     ]
 )
 DIODE = box(-2.5, -1.18, 2.5, 1.18)
+# Kailh socket lands in switch-local assembly coordinates before rotation.
+MX_COPPER = unary_union([
+    box(cx - 1.275, cy - 1.25, cx + 1.275, cy + 1.25)
+    for cx, cy in ((7.085, -2.54), (-5.842, -5.08))
+])
+FINGER_J1_X = -20.0
+FINGER_J1_Y = 52.0
 
 
 def pose(shape, x, y, a):
@@ -44,22 +51,33 @@ def plan(hand, deck):
     sign = 1 if hand == "left" else -1
     data = LAYOUT["fixed" if finger else "thumb"]
     outline = board(hand, deck)
-    for x, y in data["screws"]:
-        outline = outline.difference(Point(sign * x, y).buffer(2.85, quad_segs=12))
+    screws = data["screws"]
     if finger:
-        # SW18 sits in a single-key finger of the outline. Preserve 0.24 mm
-        # to the case locally while giving its outer socket land 0.55 mm to the mill.
-        px = -89.02 if hand == "left" else 99.18
-        py = -52.29825
-        land = box(px - 1.25, py - 1.275, px + 1.25, py + 1.275)
-        rim = cavity(hand, deck).buffer(-0.24)
-        outline = outline.union(land.buffer(0.57, quad_segs=6).intersection(rim))
+        screws = json.loads((PCB / "case/finger-posts.json").read_text())
+        # A common board perimeter fits the asymmetrical solder lands in both hands.
+        # Keep the key centers fixed and add laminate only near the constrained edges.
+        envelope = SOCKET.buffer(0.10).union(MX_COPPER.buffer(0.60))
+        additions = [outline]
+        for kx, ky, yaw in data["keys"]:
+            for mirrored in (1, -1):
+                local = scale(envelope, xfact=mirrored, origin=(0, 0))
+                additions.append(pose(local, sign * kx, ky, 180 + sign * yaw))
+        # Support the rear flex socket, including its two soldered hold-downs.
+        x, y = sign * FINGER_J1_X, FINGER_J1_Y
+        additions.append(box(x - 5.7, y - 4.0, x + 5.7, y + 3.9).buffer(0.70))
+        # Round narrow internal corners so a board mill can follow the profile.
+        outline = unary_union(additions).buffer(0.9).buffer(-0.9).simplify(0.018)
+    for x, y in screws:
+        outline = outline.difference(Point(sign * x, y).buffer(2.85, quad_segs=12))
     if not finger:
         # Air below the onboard antenna, at the end opposite the USB connector.
         xs = sorted([sign * 9, sign * 15.3])
         ys = sorted([0.5 + sign * (u - 8.89) for u in (2.9, 9.5)])
         outline = outline.difference(box(xs[0], ys[0], xs[1], ys[1]))
     parts = []
+    supports = json.loads((PCB / "case/supports.json").read_text())
+    support_areas = [Point(sign * x, y).buffer(radius)
+                     for x, y, radius in supports["fixed" if finger else "thumb"]]
     obstacles = []
 
     def add(ref, value, foot, x, y, angle, nets, extra=None):
@@ -82,7 +100,7 @@ def plan(hand, deck):
         obstacles.append(pose(shape, x, y, a))
 
     # Identical bottom-contact ZIFs, with their mating side toward the cable exit.
-    x, y = (sign * -27.0, 47.0) if finger else (sign * 20.25, 13.45)
+    x, y = (sign * FINGER_J1_X, FINGER_J1_Y) if finger else (sign * 20.25, 13.45)
     add("J1", "FH12-12S-0.5SH(55)", "FFC12", x, y, 0 if finger else -9 * sign, FLEX)
     occupy(box(-5.8, -2.65, 5.8, 4.5), x, y, 0 if finger else -9 * sign)
     if not finger:
@@ -142,25 +160,16 @@ def plan(hand, deck):
         )
         number = idx if finger else 26 + idx
         local = f"K{number}"
-        # Choice of 90-degree multiples preserves the MX cap axis. Select the
-        # orientation with most clearance from the wall, posts and connectors.
-        candidates = []
-        for quarter in [0, 180, 90, 270]:
-            angle = base * sign + quarter
-            shape = pose(SOCKET, x, y, angle)
-            if outline.covers(shape) and not any(
-                shape.intersects(o) for o in obstacles
-            ):
-                score = min(
-                    [
-                        shape.distance(outline.boundary),
-                        *[shape.distance(o) for o in obstacles],
-                    ]
-                )
-                candidates.append((score, angle, shape))
-        if not candidates:
-            raise RuntimeError(f"No space for {name} SW{number} at {(x, y)}")
-        _, angle, shape = max(candidates, key=lambda item: item[0])
+        # With this underside footprint the LED window faces local south at 180°.
+        angle = 180 + base * sign
+        shape = pose(SOCKET, x, y, angle)
+        copper = pose(MX_COPPER, x, y, angle)
+        if not outline.covers(copper.buffer(0.50)):
+            raise ValueError(f"{name} SW{number} needs more laminate at its lands")
+        if any(shape.distance(land) < 0.50 for land in support_areas):
+            raise ValueError(f"{name} SW{number} interferes with a printed support")
+        if any(shape.intersects(o) for o in obstacles):
+            raise ValueError(f"{name} SW{number} conflicts with another component")
         obstacles.append(shape)
         add(
             "SW" + str(number),
@@ -173,13 +182,15 @@ def plan(hand, deck):
             {"row": row, "column": col},
         )
         pending.append((x, y, number, row, local))
+    obstacles.extend(support_areas)
+    diode_area = outline.buffer(-0.50)
     for x, y, number, row, local in pending:
         candidates = []
         for dy in (4.5, -4.5, 6.7, -6.7, 7.7, -7.7, 0):
             for dx in (0, 3, -3, 5.8, -5.8, 7.8, -7.8):
                 for angle in (0, 90):
                     shape = pose(DIODE, x + dx, y + dy, angle)
-                    if outline.contains(shape) and not any(
+                    if diode_area.covers(shape) and not any(
                         shape.distance(o) < 0.35 for o in obstacles
                     ):
                         score = math.hypot(dx, dy) + 0.1 * int(angle != 0)

@@ -1,8 +1,17 @@
-# KobitoKey-inspired folding MX case
+# KobitoKey-inspired folding keyboard
 
-The standard model preserves the 17 finger positions and three-key thumb fan on each hand. The expanded model adds a far row and an outer column to the main grid, bringing each hand to 29 switches. Both use the same thumb shell, hinge and thumb plate. The model is a hand-wired mechanical prototype.
+## Expanded hot-swap keyboards
 
-The [expanded MX PCB edition](pcb/README.md) adds 58 hot-swap switches, four KiCad boards, wireless firmware and printable shells with USB and flex-cable openings. The [hinge sourcing notes](hinge-sourcing.md) cover two commercial torque-hinge candidates.
+Both editions have **58 south-facing switches**, a 19.05 mm finger pitch, and three folding thumb keys per hand. Choose the PCBs, plates and sockets for your switches.
+
+| Switch edition | Complete package | Build guide |
+| --- | --- | --- |
+| Full-height MX · revision B | [Download MX](Expanded-MX-PCB.zip) | [MX parts and assembly](pcb/README.md) |
+| Low-profile Kailh Choc V2 | [Download Choc V2](Expanded-Choc-V2-PCB.zip) | [Choc V2 parts and assembly](choc-v2/README.md) |
+
+## Hand-wired MX case
+
+The standard model preserves the 17 finger positions and three-key thumb fan on each hand. The expanded model adds a far row and an outer column to the main grid, bringing each hand to 29 switches. Both use the same thumb shell, hinge and thumb plate. The instructions below cover the hand-wired mechanical prototype. The [hinge sourcing notes](hinge-sourcing.md) cover two commercial torque-hinge candidates.
 
 ![Flat standard right hand, folded pair, and layout comparison](preview.png)
 

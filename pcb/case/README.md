@@ -1,14 +1,18 @@
-# Expanded MX case for the PCB assembly
+# Expanded MX case · south-facing PCB
 
-Print the four [PCB shells](print) and use the [original expanded MX switch plates](../../print/expanded). Open [Expanded-PCB.blend](Expanded-PCB.blend) to edit the case or inspect the electronics. Each half has 26 finger switches and three thumb switches.
+Print the fixed shell, fixed plate, thumb shell and thumb plate for each hand. The eight matching STLs cover both hands. Each half has 26 finger switches and three thumb switches. All 58 switches face south relative to their keycaps, including the three fanned thumb positions. [Left parts](print/left) · [Right parts](print/right) · [Editable Blender master](Expanded-PCB.blend)
 
-- **PCB workbench** shows all four editable board meshes and their placed components. Press Home to frame the boards and Ctrl + Numpad 7 for the component-side view. The board solids follow the actual KiCad perimeters, post cuts, MX and switch locating drills. Component bodies and protected cells are mechanical envelopes. Copper, vias and the free cable loop are documented in the KiCad files and assembly guide.
+The two revised finger plates and their matching shells move the fifth screw post and carry the extended rear flex connector. The new fixed plate preserves every key center and its original 14 mm opening. The two enclosed thumb plates also match the original expanded thumb plate geometry.
+
+- **PCB workbench** shows all four editable board meshes and their placed components. Press Home to frame the boards and Ctrl + Numpad 7 for the component-side view. The board solids follow the actual KiCad perimeters, post cuts, MX and switch locating drills. The Kailh and Hirose envelopes follow the underside silhouettes of their KiCad STEP models. Other components and protected cells use package boxes. Copper, vias and the free cable loop are documented in the KiCad files and assembly guide.
 - **Edit left hand** shows the case and electronics together. Select Controls and adjust the `thumb_fold_deg` custom property from 0° to 60°. The thumb board, USB socket, switch, battery and other thumb components follow the moving deck.
 - **Split keyboard** shows both complete hands. Both thumb pivots use the same slider. The right-hand PCB meshes and component rotations come from the right-hand design files.
 
 ![Left-hand PCB and printed support locations, with the thumb electronics enlarged](mechanical-fit.png)
 
 ## Shells and fit
+
+The fixed PCB now enters through the top past local pockets for the socket solder pads. The fifth finger post and its floor screw moved to X = ±65.525, Y = −1.25 mm. The rear finger flex sits at X = ±20, Y = 52 mm and exits straight back through its own 8 mm slot. At rim height, the narrowest section of continuous finger wall between the cavity and the exterior outline is 1.31 mm before cutting that slot.
 
 The thumb wall has a 12 × 6.8 mm USB opening and a 9 × 3.8 mm power-switch opening. An internal recess clears both shoulders of the XIAO circuit board. The wall behind each shoulder is 1.20 mm thick. The USB nose sits about 0.10 mm inside the outer wall. Check that your cable’s overmold can seat fully through the opening.
 
@@ -17,13 +21,17 @@ The thumb wall has a 12 × 6.8 mm USB opening and a 9 × 3.8 mm power-switch ope
 | Switch plate top / bottom | 18.0 / 16.5 mm above the shell base |
 | PCB top / bottom | 13.0 / 11.4 mm |
 | PCB support height | 11.2 mm, with a 0.20 mm gap at rest |
-| Smallest finger PCB to shell gap | 0.24 mm |
+| Smallest finger PCB to shell gap | 0.382 mm, both hands |
+| Socket housing to printed shell / plate posts, both hands | 0.991 / 2.182 mm minimum |
+| Socket solder pad to printed shell / plate posts | 0.963 / 1.523 mm minimum |
+| Socket solder pad to milled board edge | 0.581 mm minimum |
+| Socket, pads and locating pins to neighboring component | 1.245 mm minimum |
 | Smallest thumb PCB to shell gap | 0.41 mm right, 0.43 mm left |
 | Smallest PCB to plate mounting post gap | 0.39 mm |
 | USB center along the wall | Y = +0.5 mm |
 | Slide switch center along the wall | Y = −14 mm |
 
-The mounting posts locate the plate. Each MX switch clips into the plate and seats in its matching PCB holes. Three insulating lands under each board limit downward motion. Their top faces clear the modeled component envelopes by at least 0.85 mm. Back each Kailh socket directly while seating switches during initial assembly. If a physical sample needs less vertical play, fit a thin dielectric shim only to a support land and check that the plate still closes without preload.
+The mounting posts locate the plate. Each MX switch clips into the plate and seats in its matching PCB holes. Three insulating lands under each board limit downward motion. Their top faces clear the modeled component envelopes by at least 0.847 mm. Back each Kailh socket directly while seating switches during initial assembly. If a physical sample needs less vertical play, fit a thin dielectric shim only to a support land and check that the plate still closes without preload.
 
 ## Assembly and fold
 
@@ -35,17 +43,19 @@ The mounting posts locate the plate. Each MX switch clips into the plate and sea
 
 ## Verification
 
-- **STLs.** The four binary STLs each form one closed, outward-facing mesh. Their triangles passed winding, degeneracy and self-contact checks. The feature checks probe the actual USB and slide apertures, shoulder-pocket wall and representative component, battery and cable access envelopes. [Shell measurements](shell-checks.json)
-- **Board fit.** Each actual KiCad `Edge.Cuts` perimeter was compared with the exported shell and plate facets across the full 1.6 mm laminate thickness. Support heights were measured from the printed shell meshes and compared against the handed underside component placements. [Board fit measurements](board-fit.json)
+- **STLs.** The eight binary STLs each form one closed, outward-facing mesh. Their triangles passed winding, degeneracy and self-contact checks. The feature checks probe the actual USB and slide apertures, shoulder-pocket wall and representative component, battery and cable access envelopes. [Shell measurements](shell-checks.json)
+- **Board fit.** Each actual KiCad `Edge.Cuts` perimeter was compared with the exported shell and plate facets across the full 1.6 mm laminate thickness. Support heights were measured from the shell meshes. The check confirms every footprint's south-facing orientation, projects the full Kailh and Hirose package silhouettes from their STEP models, and checks mounting pins and solder lands independently against the milled board, case, posts and neighboring components. Both hands’ matching floor holes and plate pilots were also probed in the exported STLs. [Board fit measurements](board-fit.json)
 - **Motion.** The factory Blender 5.2.4 LTS build evaluated 121 positions between 0° and 60°. The closest sampled gap was 0.248 mm. The computed lower bound between samples was 0.204 mm for the modeled case, keys and fit gauges. The purchased hinge fastener envelopes and tool access passed a separate check. [Fold sweep](fold.json) · [Hardware check](hardware.json)
 - **Electronics in motion.** A second sweep checked each hand’s actual rig and board placements at 121 positions. The boards, components and cell envelopes maintained at least 1.0 mm to the opposite deck’s electronics, printed parts, key fit gauges and hinge hardware throughout the range. The indexing screw cleared the electronics in both locked positions. The checker caps reported gaps at 1.0 mm. [Electronics sweep](electronics-fold.json)
 - **Prototype status.** FDM tolerance, switch insertion loads, USB overmold fit, the flexible cable’s moving path, battery retention and radio range still need a physical sample.
 
 ## Reproduce
 
-Run from the repository root. The shell builder reads the committed expanded model. The board-fit checker reads the current four KiCad board files. The Blender commands on this Mac require the approved outside-sandbox execution described in [AGENTS.md](../../AGENTS.md).
+Run from the repository root. The first command recalculates the common finger perimeter from the two handed outline manifests. The second measures the actual socket and flex connector models in the completed KiCad board. It requires KiCad and its 3D library. The JSON profiles are included so Blender can build all eight parts directly. The Blender builder starts from the original expanded model. The board-fit checker reads the current four native KiCad boards. The Blender commands on this Mac require the approved outside-sandbox execution described in [AGENTS.md](../../AGENTS.md).
 
 ```sh
+uv run --no-project --with numpy --with shapely python3 pcb/case/finger_profiles.py
+uv run --no-project --with numpy --with shapely python3 pcb/case/component_profiles.py --kicad-cli kicad-cli
 /Applications/Blender.app/Contents/MacOS/Blender -b --python-exit-code 1 --python pcb/case/build_case.py
 python3 pcb/case/check_case.py
 uv run --no-project --with numpy --with shapely python3 pcb/case/check_boards.py

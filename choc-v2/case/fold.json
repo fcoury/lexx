@@ -1,0 +1,265 @@
+{
+  "file": "Expanded-Choc-V2.blend",
+  "sha256": "49ed42cb40a1a095f810f690133e64c61de191998c86d356141d69a299ca4fd8",
+  "blender": "5.2.4 LTS",
+  "range_deg": [
+    0,
+    60
+  ],
+  "samples": 121,
+  "step_deg": 0.5,
+  "report_limit_mm": 1.0,
+  "numeric_margin_mm": 0.0005,
+  "note": "Values at the report limit mean at least that distance. The continuous bound subtracts each moving triangle's maximum chord travel to its nearest sample, uses the invariant axial separation when larger, and allows for rounding. One half, rigid linear rotation about world Y; same-group pairs excluded.",
+  "minimum_sampled_gap_mm": 0.24789237670087166,
+  "minimum_continuous_lower_bound_mm": 0.20412665571912078,
+  "collisions": [],
+  "pairs": [
+    {
+      "fixed": "fixed_pin",
+      "moving": "thumb_shell",
+      "sample_gap_mm": 0.24789237670087166,
+      "at_deg": 59.0,
+      "continuous_lower_bound_mm": 0.20412665571912078
+    },
+    {
+      "fixed": "fixed_shell",
+      "moving": "thumb_shell",
+      "sample_gap_mm": 0.5,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 0.4995
+    },
+    {
+      "fixed": "fixed_shell",
+      "moving": "thumb_plate",
+      "sample_gap_mm": 0.6492842924633643,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 0.5968919634559772
+    },
+    {
+      "fixed": "fixed_plate",
+      "moving": "thumb_shell",
+      "sample_gap_mm": 0.6000003347793281,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 0.5995003814697266
+    },
+    {
+      "fixed": "fixed_shell",
+      "moving": "thumb_envelopes",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_shell",
+      "moving": "thumb_caps",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_shell",
+      "moving": "thumb_switches",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_plate",
+      "moving": "thumb_plate",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_plate",
+      "moving": "thumb_envelopes",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_plate",
+      "moving": "thumb_caps",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_plate",
+      "moving": "thumb_switches",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_envelopes",
+      "moving": "thumb_shell",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_envelopes",
+      "moving": "thumb_plate",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_envelopes",
+      "moving": "thumb_envelopes",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_envelopes",
+      "moving": "thumb_caps",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_envelopes",
+      "moving": "thumb_switches",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_caps",
+      "moving": "thumb_shell",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_caps",
+      "moving": "thumb_plate",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_caps",
+      "moving": "thumb_envelopes",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_caps",
+      "moving": "thumb_caps",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_caps",
+      "moving": "thumb_switches",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_switches",
+      "moving": "thumb_shell",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_switches",
+      "moving": "thumb_plate",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_switches",
+      "moving": "thumb_envelopes",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_switches",
+      "moving": "thumb_caps",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_switches",
+      "moving": "thumb_switches",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_caps_added",
+      "moving": "thumb_shell",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_caps_added",
+      "moving": "thumb_plate",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_caps_added",
+      "moving": "thumb_envelopes",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_caps_added",
+      "moving": "thumb_caps",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_caps_added",
+      "moving": "thumb_switches",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_pin",
+      "moving": "thumb_plate",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_pin",
+      "moving": "thumb_envelopes",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_pin",
+      "moving": "thumb_caps",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    },
+    {
+      "fixed": "fixed_pin",
+      "moving": "thumb_switches",
+      "sample_gap_mm": 1.0,
+      "at_deg": 0.0,
+      "continuous_lower_bound_mm": 1.0
+    }
+  ],
+  "pass": true
+}

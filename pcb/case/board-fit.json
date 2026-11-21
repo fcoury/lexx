@@ -1,18 +1,78 @@
 [
   {
     "board": "left-finger",
-    "edge_cuts_area_mm2": 9034.945,
-    "shell_gap_mm": 0.24,
+    "mounted_mx_minima": {
+      "socket_body_to_shell": {
+        "gap_mm": 1.463,
+        "at": "SW18"
+      },
+      "socket_body_to_plate_posts": {
+        "gap_mm": 2.211,
+        "at": "SW7"
+      },
+      "locating_pins_to_shell_or_plate": {
+        "gap_mm": 1.348,
+        "at": "SW18"
+      },
+      "solder_pads_to_plate_posts": {
+        "gap_mm": 1.552,
+        "at": "SW7"
+      },
+      "solder_pads_to_shell": {
+        "gap_mm": 1.048,
+        "at": "SW17"
+      },
+      "solder_pads_to_edge_cuts": {
+        "gap_mm": 0.581,
+        "at": "SW17"
+      },
+      "socket_pads_pins_to_adjacent_component": {
+        "gap_mm": 1.27,
+        "at": "SW1/D1"
+      }
+    },
+    "edge_cuts_area_mm2": 9198.598,
+    "shell_gap_mm": 0.382,
     "plate_post_gap_mm": 0.4,
     "support_z_gap_mm": 0.2,
     "support_to_component_xy_gaps_mm": [
-      1.987,
-      1.457,
-      2.477
+      1.679,
+      1.15,
+      1.032
     ]
   },
   {
     "board": "left-thumb",
+    "mounted_mx_minima": {
+      "socket_body_to_shell": {
+        "gap_mm": 3.322,
+        "at": "SW27"
+      },
+      "socket_body_to_plate_posts": {
+        "gap_mm": 5.491,
+        "at": "SW27"
+      },
+      "locating_pins_to_shell_or_plate": {
+        "gap_mm": 1.706,
+        "at": "SW27"
+      },
+      "solder_pads_to_plate_posts": {
+        "gap_mm": 5.88,
+        "at": "SW27"
+      },
+      "solder_pads_to_shell": {
+        "gap_mm": 3.23,
+        "at": "SW27"
+      },
+      "solder_pads_to_edge_cuts": {
+        "gap_mm": 2.761,
+        "at": "SW27"
+      },
+      "socket_pads_pins_to_adjacent_component": {
+        "gap_mm": 1.245,
+        "at": "SW29/D29"
+      }
+    },
     "edge_cuts_area_mm2": 3004.802,
     "shell_gap_mm": 0.434,
     "plate_post_gap_mm": 0.394,
@@ -25,18 +85,78 @@
   },
   {
     "board": "right-finger",
-    "edge_cuts_area_mm2": 9036.591,
-    "shell_gap_mm": 0.24,
+    "mounted_mx_minima": {
+      "socket_body_to_shell": {
+        "gap_mm": 0.991,
+        "at": "SW1"
+      },
+      "socket_body_to_plate_posts": {
+        "gap_mm": 2.182,
+        "at": "SW9"
+      },
+      "locating_pins_to_shell_or_plate": {
+        "gap_mm": 1.492,
+        "at": "SW6"
+      },
+      "solder_pads_to_plate_posts": {
+        "gap_mm": 1.523,
+        "at": "SW9"
+      },
+      "solder_pads_to_shell": {
+        "gap_mm": 0.963,
+        "at": "SW3"
+      },
+      "solder_pads_to_edge_cuts": {
+        "gap_mm": 0.581,
+        "at": "SW13"
+      },
+      "socket_pads_pins_to_adjacent_component": {
+        "gap_mm": 1.27,
+        "at": "SW1/D1"
+      }
+    },
+    "edge_cuts_area_mm2": 9200.045,
+    "shell_gap_mm": 0.382,
     "plate_post_gap_mm": 0.4,
     "support_z_gap_mm": 0.2,
     "support_to_component_xy_gaps_mm": [
       1.679,
-      1.156,
-      2.477
+      1.1,
+      1.409
     ]
   },
   {
     "board": "right-thumb",
+    "mounted_mx_minima": {
+      "socket_body_to_shell": {
+        "gap_mm": 3.891,
+        "at": "SW29"
+      },
+      "socket_body_to_plate_posts": {
+        "gap_mm": 4.942,
+        "at": "SW27"
+      },
+      "locating_pins_to_shell_or_plate": {
+        "gap_mm": 1.706,
+        "at": "SW27"
+      },
+      "solder_pads_to_plate_posts": {
+        "gap_mm": 4.282,
+        "at": "SW27"
+      },
+      "solder_pads_to_shell": {
+        "gap_mm": 3.548,
+        "at": "SW29"
+      },
+      "solder_pads_to_edge_cuts": {
+        "gap_mm": 3.075,
+        "at": "SW29"
+      },
+      "socket_pads_pins_to_adjacent_component": {
+        "gap_mm": 1.245,
+        "at": "SW29/D29"
+      }
+    },
     "edge_cuts_area_mm2": 3004.706,
     "shell_gap_mm": 0.41,
     "plate_post_gap_mm": 0.394,

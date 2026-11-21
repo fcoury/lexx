@@ -1,6 +1,6 @@
 (kicad_sch (version 20250114) (generator eeschema)
  (uuid "3f002f6a-0021-5d2e-998b-f4b9bf04ff2d") (paper "A3")
- (title_block (title "Lexx expanded MX — Right Finger") (rev "A") (company "Lexx")
+ (title_block (title "Lexx expanded MX — Right Finger") (rev "B") (company "Lexx")
   (comment 1 "58-key wireless split keyboard • 29 keys per hand"))
  (lib_symbols (symbol "Lexx:D"
 (pin_names (offset 0.762) (hide yes))

@@ -1,0 +1,17 @@
+Item,Quantity for keyboard,References per hand,Manufacturer or spec,Part or requirement,Assembly note
+Choc hot-swap socket,58,SW1–SW29,Kailh,CPG135001S30,Solder to the underside; back the socket when inserting a switch.
+Choc V2 low-profile switch,58,SW1–SW29,Kailh PG1353,CPG135301D01 red linear (reference part),Mount from above; LED window toward the typist.
+Low-profile keycap,58,SW1–SW29,1u Choc V2-compatible cross-stem,Choc V2-compatible 1u; select size within the modeled envelope,"Check cap skirt travel on a sample, especially at the thumb fan."
+Switch diode,58,D1-D29,Diodes Incorporated,1N4148W-7-F SOD-123,Bottom side. Banded cathode toward pad 1.
+ZIF connector,4,J1 on each PCB,Hirose,FH12-12S-0.5SH(55),12 positions 0.5 mm pitch bottom contact.
+Inter-board cable,2,Finger J1 to thumb J1,Molex,15078-2412 102 mm opposite-side contacts,Starting length. Check 1-to-1 continuity and folding loop on the assembly.
+Controller module,2,U1,Seeed Studio,XIAO nRF52840 non-Plus non-Sense,Bottom side. USB-C faces the thumb outer wall. Battery requires the underside VBAT pad.
+Battery connector,2,J2,JST,S2B-PH-SM4-TB(LF)(SN),Bottom side. Pin 1 positive and pin 2 ground. Verify mating lead polarity.
+Slide switch,2,S1,C&K,PCM12SMTR,Bottom side. Connects battery to module when closed. USB can still power the module when open.
+Protected battery,2,J2,Single-cell rechargeable LiPo,3.7 V nominal / 4.2 V full with JST PHR-2 mate,Optional for USB bench test. Max modeled body 18 x 24 x 4 mm. Match cell charge rating to controller.
+Printed enclosure,1,Both hands,Project,Choc V2 shells and plates,Print four matching parts per hand.
+Hinge axle,2,One per hand,M3 × 50 mm socket cap,5.5 mm maximum head diameter; 3 mm head height,Use one axle with one M3 locknut.
+Axle nut,2,One per hand,M3 nyloc,Up to 6.4 mm diameter envelope × 4 mm high,Check access with the assembled case.
+Angle-lock screw,2,One per hand,M3 × 10 mm socket cap,Same head envelope as axle,Remove before changing the angle.
+Angle-lock insert,2,One per hand,M3 brass heat-set,4.0 mm outer diameter × 4.0 mm long,Install with the thumb shell detached.
+Plate screw,18,Nine per hand,M2.5 × 8 countersunk plastic thread-forming,90 degree countersink; head up to 5.1 mm,Five finger screws and four thumb screws per hand.

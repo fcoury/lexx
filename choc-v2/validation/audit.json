@@ -1,0 +1,42 @@
+{
+  "boards": {
+    "left-finger": {
+      "switches": 26,
+      "native_sha256": "a4c5326967d05bbcdd172af867f6168b90f9a523bab4a0706bf66b1d4e5835b9",
+      "archive_sha256": "ac4f39c6e65800c88ed98aa908bac03781d8d038729fb77d297ab51725131539",
+      "fab_switch_features": 104,
+      "bottom_copper_and_paste_lands": 52,
+      "worst_drill_endpoint_error_mm": 0.0005
+    },
+    "right-finger": {
+      "switches": 26,
+      "native_sha256": "e1a67920e83f6e08197e824ee04535c3a4e7ee6ad9d653bb0d1c437c7f59916d",
+      "archive_sha256": "76ad7aced47e7a20de81940c592ac305777dbb610aa084a2fb68e55f6a05288e",
+      "fab_switch_features": 104,
+      "bottom_copper_and_paste_lands": 52,
+      "worst_drill_endpoint_error_mm": 0.0005
+    },
+    "left-thumb": {
+      "switches": 3,
+      "native_sha256": "cbf2941f3467fe736fc3ea6800c5da10e4abc982c69c1d6d586842618c6e1aa8",
+      "archive_sha256": "f21e2767d983585a95f69e126f1fe88993d3f6138fec9b14bbf8d0b2e9f2fe57",
+      "fab_switch_features": 12,
+      "bottom_copper_and_paste_lands": 6,
+      "worst_drill_endpoint_error_mm": 0.0006046
+    },
+    "right-thumb": {
+      "switches": 3,
+      "native_sha256": "58dc7f52f8992507999d5563e27dddeda334b5fd40eaf434e7aaf7ca688e72bf",
+      "archive_sha256": "446cba4b69f62d1c4f18115f6994584ad65d429ef787ec25875a16359ad79f81",
+      "fab_switch_features": 12,
+      "bottom_copper_and_paste_lands": 6,
+      "worst_drill_endpoint_error_mm": 0.0004851
+    }
+  },
+  "switch_positions": 58,
+  "keymap_layers": 3,
+  "firmware_sha256": {
+    "left": "a1befa461bfae84d2fef2af8efb161d5c66cff5ed85050b3565efc55967f034f",
+    "right": "8b8acd632dbbcfc680a00eddecbb14eef1cf355e3ca802f8136a63e7dbe37651"
+  }
+}

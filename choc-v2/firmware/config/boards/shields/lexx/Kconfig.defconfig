@@ -1,0 +1,16 @@
+if SHIELD_LEXX_LEFT || SHIELD_LEXX_RIGHT
+
+config ZMK_KEYBOARD_NAME
+    default "Lexx Choc V2"
+
+config ZMK_SPLIT
+    default y
+
+endif
+
+if SHIELD_LEXX_LEFT
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif

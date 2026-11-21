@@ -1,0 +1,23 @@
+{
+  "model": "Expanded-Choc-V2.blend",
+  "sha256": "49ed42cb40a1a095f810f690133e64c61de191998c86d356141d69a299ca4fd8",
+  "axle_sampled_poses": 61,
+  "index_assembly_angles_deg": [
+    0,
+    60
+  ],
+  "thumb_envelope_vertex": {
+    "index": 0,
+    "at_0_deg_mm": [
+      -39.7039680480957,
+      -63.4262809753418,
+      9.399999618530273
+    ],
+    "at_60_deg_mm": [
+      -16.907495498657227,
+      -63.4262809753418,
+      42.08464813232422
+    ],
+    "max_pose_error_mm": 1.0271386732357986e-05
+  }
+}
