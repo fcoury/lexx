@@ -1,0 +1,56 @@
+{
+  "outcome": "PASS",
+  "units": "mm",
+  "axle": "M3x50, 5.5 mm head diameter x 3 mm high, 6.4 mm locknut envelope x 4 mm high, no washers",
+  "index": "M3x10, socket cap head up to 5.5 mm x 3 mm. M3 heat-set insert 4 mm OD x 4 mm long in 3.65 mm pilot; insert flush at y=17.3. Full 4 mm thread engagement.",
+  "method": "Triangle BVH surface intersections on saved models. Fit insert from +Y into detached wing. Assemble axle flat with case lifted; introduce its nut from underneath before protruding the bolt. Insert both screws from +Y. Allow 0.01 mm at intentional bearing faces.",
+  "limits": "Ideal rigid dimensions. Axle locknut-holder envelope tested from below at 8.5 mm wide x 3 mm thick. Local insert interference with its plastic bore and screw-thread engagement are intentional. Cable routing, tool-specific shape, print tolerances and wear excluded.",
+  "variants": [
+    {
+      "model": "Standard.blend",
+      "sha256": "bf25ccaee428953ab2baf2078d2a4fb1361fcd4132fb48234ca75dfa2acb1721",
+      "axle_sampled_poses": 61,
+      "index_assembly_angles_deg": [
+        0,
+        60
+      ],
+      "thumb_envelope_vertex": {
+        "index": 0,
+        "at_0_deg_mm": [
+          -39.7039680480957,
+          -63.4262809753418,
+          5.25
+        ],
+        "at_60_deg_mm": [
+          -20.501501083374023,
+          -63.4262809753418,
+          40.009647369384766
+        ],
+        "max_pose_error_mm": 1.0789593218788873e-05
+      }
+    },
+    {
+      "model": "Expanded.blend",
+      "sha256": "67433b5bb5cb24241bac9be4c7dd60a9fd295ab5db7a8cba765272c8c9b7023e",
+      "axle_sampled_poses": 61,
+      "index_assembly_angles_deg": [
+        0,
+        60
+      ],
+      "thumb_envelope_vertex": {
+        "index": 0,
+        "at_0_deg_mm": [
+          -39.7039680480957,
+          -63.4262809753418,
+          5.25
+        ],
+        "at_60_deg_mm": [
+          -20.501501083374023,
+          -63.4262809753418,
+          40.009647369384766
+        ],
+        "max_pose_error_mm": 1.0789593218788873e-05
+      }
+    }
+  ]
+}
