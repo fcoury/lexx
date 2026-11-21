@@ -1,0 +1,180 @@
+[
+  {
+    "path": "print/left/fixed_shell.stl",
+    "sha256": "cb52a06c25821c19ca445f1e9fcdb99e98c7c542ee399911a47b1fe4986efe2a",
+    "triangles": 5830,
+    "connected_components": 1,
+    "bad_edges": 0,
+    "zero_area_triangles": 0,
+    "self_intersections": 0,
+    "signed_volume_mm3": 42191.49,
+    "flex_open_to_rim_width_mm": 8.0
+  },
+  {
+    "path": "print/left/thumb_shell.stl",
+    "sha256": "fba26eb51917c599ada6ab13fa719bcda56246ece3e7b64ab2da2926b61f0c1c",
+    "triangles": 5668,
+    "connected_components": 1,
+    "bad_edges": 0,
+    "zero_area_triangles": 0,
+    "self_intersections": 0,
+    "signed_volume_mm3": 23393.82,
+    "flex_open_to_rim_width_mm": 8.0,
+    "validated_boxes_left_assembly_mm": {
+      "XIAO module laminate": [
+        [
+          11.1,
+          -8.39,
+          9.65
+        ],
+        [
+          32.05,
+          9.39,
+          11.32
+        ]
+      ],
+      "USB receptacle nose": [
+        [
+          31.95,
+          -4.0,
+          6.7
+        ],
+        [
+          33.55,
+          5.0,
+          10.2
+        ]
+      ],
+      "plug tongue approach": [
+        [
+          33.0,
+          -4.0,
+          6.75
+        ],
+        [
+          40,
+          5.0,
+          10.15
+        ]
+      ],
+      "PCM12 actuator approach": [
+        [
+          30.2,
+          -16.4,
+          9.5
+        ],
+        [
+          38,
+          -11.6,
+          10.85
+        ]
+      ],
+      "protected battery envelope": [
+        [
+          12,
+          -33,
+          2.9
+        ],
+        [
+          30,
+          -9,
+          6.9
+        ]
+      ]
+    },
+    "xiao_shoulder_skin_mm": 1.204,
+    "FFC_to_two_plate_posts_nominal_gap_mm": [
+      0.666,
+      2.23
+    ]
+  },
+  {
+    "path": "print/right/fixed_shell.stl",
+    "sha256": "7010c65f535fb4d2b261d8c0fe102df994673042d045a492a67f2c3181281194",
+    "triangles": 5830,
+    "connected_components": 1,
+    "bad_edges": 0,
+    "zero_area_triangles": 0,
+    "self_intersections": 0,
+    "signed_volume_mm3": 42191.49,
+    "flex_open_to_rim_width_mm": 8.0
+  },
+  {
+    "path": "print/right/thumb_shell.stl",
+    "sha256": "ac03bae2ee9d5373defc24a2110d885b25d6936149bc89ff5b23321a379775f8",
+    "triangles": 5668,
+    "connected_components": 1,
+    "bad_edges": 0,
+    "zero_area_triangles": 0,
+    "self_intersections": 0,
+    "signed_volume_mm3": 23393.82,
+    "flex_open_to_rim_width_mm": 8.0,
+    "validated_boxes_left_assembly_mm": {
+      "XIAO module laminate": [
+        [
+          11.1,
+          -8.39,
+          9.65
+        ],
+        [
+          32.05,
+          9.39,
+          11.32
+        ]
+      ],
+      "USB receptacle nose": [
+        [
+          31.95,
+          -4.0,
+          6.7
+        ],
+        [
+          33.55,
+          5.0,
+          10.2
+        ]
+      ],
+      "plug tongue approach": [
+        [
+          33.0,
+          -4.0,
+          6.75
+        ],
+        [
+          40,
+          5.0,
+          10.15
+        ]
+      ],
+      "PCM12 actuator approach": [
+        [
+          30.2,
+          -16.4,
+          9.5
+        ],
+        [
+          38,
+          -11.6,
+          10.85
+        ]
+      ],
+      "protected battery envelope": [
+        [
+          12,
+          -33,
+          2.9
+        ],
+        [
+          30,
+          -9,
+          6.9
+        ]
+      ]
+    },
+    "xiao_shoulder_skin_mm": 1.204,
+    "FFC_to_two_plate_posts_nominal_gap_mm": [
+      0.666,
+      2.23
+    ]
+  }
+]

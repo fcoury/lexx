@@ -1,0 +1,47 @@
+{
+  "file": "Expanded-PCB.blend",
+  "sha256": "58fa5d0f03de6f0e4795b7c5d075055f16324d4da1a8099ee23397c1ab385745",
+  "samples_per_hand": 121,
+  "range_deg": [
+    0,
+    60
+  ],
+  "step_deg": 0.5,
+  "report_limit_mm": 1.0,
+  "pcb_electronics_objects": 136,
+  "max_pose_matrix_error": 1.26198469025951e-05,
+  "clearance_method": "Exact triangle distances within report limit; conservative triangle travel bound between poses, with initial containment checks. Rigid parts only.",
+  "lowest_continuous_bound_mm": 1.0,
+  "continuous_bounds_mm": {
+    "left finger PCB / thumb PCB": 1.0,
+    "left finger PCB / thumb parts": 1.0,
+    "left finger PCB / thumb case": 1.0,
+    "left finger PCB / thumb hardware": 1.0,
+    "left finger parts / thumb PCB": 1.0,
+    "left finger parts / thumb parts": 1.0,
+    "left finger parts / thumb case": 1.0,
+    "left finger parts / thumb hardware": 1.0,
+    "left finger case / thumb PCB": 1.0,
+    "left finger case / thumb parts": 1.0,
+    "left finger hardware / thumb PCB": 1.0,
+    "left finger hardware / thumb parts": 1.0,
+    "right finger PCB / thumb PCB": 1.0,
+    "right finger PCB / thumb parts": 1.0,
+    "right finger PCB / thumb case": 1.0,
+    "right finger PCB / thumb hardware": 1.0,
+    "right finger parts / thumb PCB": 1.0,
+    "right finger parts / thumb parts": 1.0,
+    "right finger parts / thumb case": 1.0,
+    "right finger parts / thumb hardware": 1.0,
+    "right finger case / thumb PCB": 1.0,
+    "right finger case / thumb parts": 1.0,
+    "right finger hardware / thumb PCB": 1.0,
+    "right finger hardware / thumb parts": 1.0
+  },
+  "index_screw_to_electronics_at_lock_mm": {
+    "left 0 degrees": 1.0,
+    "right 0 degrees": 1.0,
+    "left 60 degrees": 1.0,
+    "right 60 degrees": 1.0
+  }
+}

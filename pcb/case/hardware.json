@@ -1,0 +1,23 @@
+{
+  "model": "Expanded-PCB.blend",
+  "sha256": "58fa5d0f03de6f0e4795b7c5d075055f16324d4da1a8099ee23397c1ab385745",
+  "axle_sampled_poses": 61,
+  "index_assembly_angles_deg": [
+    0,
+    60
+  ],
+  "thumb_envelope_vertex": {
+    "index": 0,
+    "at_0_deg_mm": [
+      -39.7039680480957,
+      -63.4262809753418,
+      5.25
+    ],
+    "at_60_deg_mm": [
+      -20.501501083374023,
+      -63.4262809753418,
+      40.009647369384766
+    ],
+    "max_pose_error_mm": 1.0789593218788873e-05
+  }
+}

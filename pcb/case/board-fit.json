@@ -1,0 +1,50 @@
+[
+  {
+    "board": "left-finger",
+    "edge_cuts_area_mm2": 9034.945,
+    "shell_gap_mm": 0.24,
+    "plate_post_gap_mm": 0.4,
+    "support_z_gap_mm": 0.2,
+    "support_to_component_xy_gaps_mm": [
+      1.987,
+      1.457,
+      2.477
+    ]
+  },
+  {
+    "board": "left-thumb",
+    "edge_cuts_area_mm2": 3004.802,
+    "shell_gap_mm": 0.434,
+    "plate_post_gap_mm": 0.394,
+    "support_z_gap_mm": 0.2,
+    "support_to_component_xy_gaps_mm": [
+      1.626,
+      4.135,
+      0.847
+    ]
+  },
+  {
+    "board": "right-finger",
+    "edge_cuts_area_mm2": 9036.591,
+    "shell_gap_mm": 0.24,
+    "plate_post_gap_mm": 0.4,
+    "support_z_gap_mm": 0.2,
+    "support_to_component_xy_gaps_mm": [
+      1.679,
+      1.156,
+      2.477
+    ]
+  },
+  {
+    "board": "right-thumb",
+    "edge_cuts_area_mm2": 3004.706,
+    "shell_gap_mm": 0.41,
+    "plate_post_gap_mm": 0.394,
+    "support_z_gap_mm": 0.2,
+    "support_to_component_xy_gaps_mm": [
+      1.626,
+      4.135,
+      0.847
+    ]
+  }
+]

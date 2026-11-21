@@ -1,0 +1,3 @@
+#include "lexx.dtsi"
+
+&layout_transform { col-offset = <6>; };

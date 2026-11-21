@@ -1,0 +1,195 @@
+[
+  {
+    "ref": "J1",
+    "value": "FH12-12S-0.5SH(55)",
+    "footprint": "Lexx:FFC12",
+    "pins": {
+      "1": "R0",
+      "2": "R1",
+      "3": "R2",
+      "4": "R3",
+      "5": "R4",
+      "6": "C0",
+      "7": "C1",
+      "8": "C2",
+      "9": "C3",
+      "10": "C4",
+      "11": "C5",
+      "12": null
+    },
+    "uuid": "29ae7e99-159e-5235-96ac-54e07a9ca0ab",
+    "xy": [
+      -20.25,
+      13.45
+    ],
+    "angle": 9,
+    "side": "B"
+  },
+  {
+    "ref": "U1",
+    "value": "Seeed XIAO nRF52840",
+    "footprint": "Lexx:XIAO",
+    "pins": {
+      "1": "R4",
+      "2": "R0",
+      "3": "R1",
+      "4": "R2",
+      "5": "C4",
+      "6": "C5",
+      "7": "R3",
+      "8": "C3",
+      "9": "C2",
+      "10": "C1",
+      "11": "C0",
+      "12": null,
+      "13": "GND",
+      "14": null,
+      "17": null,
+      "18": "GND",
+      "19": "VBAT_SW",
+      "20": "GND"
+    },
+    "uuid": "fcb17824-dd33-5a80-873b-d3add44cc586",
+    "xy": [
+      -11,
+      9.39
+    ],
+    "angle": 270,
+    "side": "B"
+  },
+  {
+    "ref": "S1",
+    "value": "PCM12SMTR",
+    "footprint": "Lexx:PowerSwitch",
+    "pins": {
+      "1": "BAT_POS",
+      "2": "VBAT_SW",
+      "3": null
+    },
+    "uuid": "82e7d217-123f-5dcd-abff-3cae97736b02",
+    "xy": [
+      -28.4,
+      -14
+    ],
+    "angle": 90,
+    "side": "B"
+  },
+  {
+    "ref": "J2",
+    "value": "S2B-PH-SM4-TB",
+    "footprint": "Lexx:Battery",
+    "pins": {
+      "1": "BAT_POS",
+      "2": "GND"
+    },
+    "uuid": "d98aed82-c769-5ef1-ae04-bbd51b3cd5a2",
+    "xy": [
+      -21,
+      -42.5
+    ],
+    "angle": 0,
+    "side": "B"
+  },
+  {
+    "ref": "SW27",
+    "value": "MX hot-swap",
+    "footprint": "Lexx:MX",
+    "pins": {
+      "1": "C0",
+      "2": "K27"
+    },
+    "uuid": "04a29db0-666c-52db-9563-f0e5a071085a",
+    "xy": [
+      30.60397,
+      -54.32628
+    ],
+    "angle": 180,
+    "side": "B",
+    "row": 0,
+    "column": 0
+  },
+  {
+    "ref": "SW28",
+    "value": "MX hot-swap",
+    "footprint": "Lexx:MX",
+    "pins": {
+      "1": "C1",
+      "2": "K28"
+    },
+    "uuid": "36de6548-3eda-584d-aba5-fc91a5c87533",
+    "xy": [
+      7.56537,
+      -57.13616
+    ],
+    "angle": 194,
+    "side": "B",
+    "row": 0,
+    "column": 1
+  },
+  {
+    "ref": "SW29",
+    "value": "MX hot-swap",
+    "footprint": "Lexx:MX",
+    "pins": {
+      "1": "C2",
+      "2": "K29"
+    },
+    "uuid": "e5f3a397-e8bb-567c-a423-af37f8a3b722",
+    "xy": [
+      -14.11591,
+      -65.45863
+    ],
+    "angle": 208,
+    "side": "B",
+    "row": 0,
+    "column": 2
+  },
+  {
+    "ref": "D27",
+    "value": "1N4148W",
+    "footprint": "Lexx:SOD123",
+    "pins": {
+      "1": "R0",
+      "2": "K27"
+    },
+    "uuid": "28bf35d3-666b-5eac-99f0-e88530aa9282",
+    "xy": [
+      30.60397,
+      -58.82628
+    ],
+    "angle": 0,
+    "side": "B"
+  },
+  {
+    "ref": "D28",
+    "value": "1N4148W",
+    "footprint": "Lexx:SOD123",
+    "pins": {
+      "1": "R0",
+      "2": "K28"
+    },
+    "uuid": "875c8aa8-c2f0-538a-a3df-0a714391c9cb",
+    "xy": [
+      7.56537,
+      -61.63616
+    ],
+    "angle": 0,
+    "side": "B"
+  },
+  {
+    "ref": "D29",
+    "value": "1N4148W",
+    "footprint": "Lexx:SOD123",
+    "pins": {
+      "1": "R0",
+      "2": "K29"
+    },
+    "uuid": "61a59bd1-5972-55aa-8fff-5e90d4268755",
+    "xy": [
+      -14.11591,
+      -69.95863
+    ],
+    "angle": 0,
+    "side": "B"
+  }
+]

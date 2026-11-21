@@ -2,6 +2,8 @@
 
 The standard model preserves the 17 finger positions and three-key thumb fan on each hand. The expanded model adds a far row and an outer column to the main grid, bringing each hand to 29 switches. Both use the same thumb shell, hinge and thumb plate. The model is a hand-wired mechanical prototype.
 
+The [expanded MX PCB edition](pcb/README.md) adds 58 hot-swap switches, four KiCad boards, wireless firmware and printable shells with USB and flex-cable openings. The [hinge sourcing notes](hinge-sourcing.md) cover two commercial torque-hinge candidates.
+
 ![Flat standard right hand, folded pair, and layout comparison](preview.png)
 
 ## Layout and source

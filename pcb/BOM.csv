@@ -1,0 +1,12 @@
+Item,Quantity for keyboard,References per hand,Manufacturer or spec,Part or requirement,Assembly note
+MX hot-swap socket,58,SW1-SW29,Kailh,CPG151101S11,Bottom side. Place one per switch.
+MX switch,58,SW1-SW29,Cherry or compatible,Mechanical MX 1u plate or PCB mount,Mount from top. Check pins before insertion.
+Keycap,58,SW1-SW29,MX cross stem,1u up to 18.2 mm square as modeled,Check actual cap profile against adjacent caps and switch orientation.
+Switch diode,58,D1-D29,Diodes Incorporated,1N4148W-7-F SOD-123,Bottom side. Banded cathode toward pad 1.
+ZIF connector,4,J1 on each PCB,Hirose,FH12-12S-0.5SH(55),12 positions 0.5 mm pitch bottom contact.
+Inter-board cable,2,Finger J1 to thumb J1,Molex,15078-2412 102 mm opposite-side contacts,Starting length. Check 1-to-1 continuity and folding loop on the assembly.
+Controller module,2,U1,Seeed Studio,XIAO nRF52840 non-Plus non-Sense,Bottom side. USB-C faces the thumb outer wall. Battery requires the underside VBAT pad.
+Battery connector,2,J2,JST,S2B-PH-SM4-TB(LF)(SN),Bottom side. Pin 1 positive and pin 2 ground. Verify mating lead polarity.
+Slide switch,2,S1,C&K,PCM12SMTR,Bottom side. Connects battery to module when closed. USB can still power the module when open.
+Protected battery,2,J2,Single-cell rechargeable LiPo,3.7 V nominal / 4.2 V full with JST PHR-2 mate,Optional for USB bench test. Max modeled body 18 x 24 x 4 mm. Match cell charge rating to controller.
+Printed case,1,Case set,Project,PCB shell set plus original expanded MX plates,See case README and v1 fastener list.
